@@ -1,14 +1,12 @@
-name: Run Cron Jobs
+name: Daily Birthday Email
 
 on:
   schedule:
-    - cron: '*/15 * * * *'     # Medianoche todos los días (UTC) para enviar cumpleaños
-    - cron: '0 0 25 12 *'   # Medianoche el 25 de diciembre (UTC) para Navidad
-    - cron: '0 0 1 1 *'     # Medianoche el 1 de enero (UTC) para Año Nuevo
+    - cron: '*/45 * * * *'     # Medianoche todos los días (UTC)
   workflow_dispatch:
 
 jobs:
-  run-cron-jobs:
+  run-daily-birthday-email:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,5 +24,5 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run cron jobs
-      run: node cronjobs.js
+    - name: Run birthday email job
+      run: node send-birthday-email.js
