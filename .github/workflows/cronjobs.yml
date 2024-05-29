@@ -2,9 +2,10 @@ name: Run Cron Jobs
 
 on:
   schedule:
-    - cron: '0 0 25 12 *'   # Medianoche el 25 de diciembre (UTC)
-    - cron: '0 0 1 1 *'     # Medianoche el 1 de enero (UTC)
-    - cron: '*/15 * * * *'    # cada 15
+    - cron: '*/15 * * * *'     # Medianoche todos los días (UTC) para enviar cumpleaños
+    - cron: '0 0 25 12 *'   # Medianoche el 25 de diciembre (UTC) para Navidad
+    - cron: '0 0 1 1 *'     # Medianoche el 1 de enero (UTC) para Año Nuevo
+  workflow_dispatch:
 
 jobs:
   run-cron-jobs:
@@ -12,12 +13,12 @@ jobs:
 
     steps:
     - name: Check out repository
-      uses: actions/checkout@v4  # Actualizado a la versión v4
+      uses: actions/checkout@v4
 
     - name: Set up Node.js
-      uses: actions/setup-node@v3  # Actualizado a la versión v3
+      uses: actions/setup-node@v3
       with:
-        node-version: '20'  # Usando Node.js 20
+        node-version: '20'
 
     - name: Print current time
       run: date -u
