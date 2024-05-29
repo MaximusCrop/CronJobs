@@ -2,9 +2,9 @@ name: Run Cron Jobs
 
 on:
   schedule:
-    - cron: '0 11 29 05 *' 
+    - cron: '0 0 25 12 *' 
     - cron: '0 0 1 1 *'   
-    - cron: '05 11 * * *'   
+    - cron: '15 11 * * *'   
   workflow_dispatch:
 
 jobs:
@@ -13,12 +13,12 @@ jobs:
 
     steps:
     - name: Check out repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4  # Actualizado a la versión v4
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3  # Actualizado a la versión v3
       with:
-        node-version: '14'
+        node-version: '20'  # Usando Node.js 20
 
     - name: Install dependencies
       run: npm install
