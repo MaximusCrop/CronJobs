@@ -2,9 +2,9 @@ name: Run Cron Jobs
 
 on:
   schedule:
-    - cron: '0 0 25 12 *' 
-    - cron: '0 0 1 1 *'   
-    - cron: '15 11 * * *'   
+    - cron: '0 0 25 12 *'   # Medianoche el 25 de diciembre (UTC)
+    - cron: '0 0 1 1 *'     # Medianoche el 1 de enero (UTC)
+    - cron: '30 11 * * *'    # 11 AM UTC (8 AM en Buenos Aires)
   workflow_dispatch:
 
 jobs:
@@ -19,6 +19,9 @@ jobs:
       uses: actions/setup-node@v3  # Actualizado a la versión v3
       with:
         node-version: '20'  # Usando Node.js 20
+
+    - name: Print current time
+      run: date -u
 
     - name: Install dependencies
       run: npm install
