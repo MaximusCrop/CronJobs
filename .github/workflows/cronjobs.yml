@@ -4,8 +4,7 @@ on:
   schedule:
     - cron: '0 0 25 12 *'   # Medianoche el 25 de diciembre (UTC)
     - cron: '0 0 1 1 *'     # Medianoche el 1 de enero (UTC)
-    - cron: '30 11 * * *'    # 11 AM UTC (8 AM en Buenos Aires)
-  workflow_dispatch:
+    - cron: '*/15 * * * *'    # cada 15
 
 jobs:
   run-cron-jobs:
